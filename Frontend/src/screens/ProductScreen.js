@@ -10,9 +10,10 @@ const ProductScreen = ({ match }) => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(`/api/products/${match.params.id}`);
-      console.log({ data });
+      // console.log({ data });
       setProduct(data);
-      console.log({ product });
+      // console.log({ product });
+      window.scrollTo(0, 0);
     };
     getData();
   }, [match.params.id]);

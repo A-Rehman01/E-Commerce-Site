@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "MERN SHOPPING CART APP",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node Backend/server",
-    "server":"nodemon Backend/server",
-    "client":"npm start --prefix Frontend",
-    "dev":"concurrently \"npm run server\" \"npm run client\""
+    "server": "nodemon Backend/server",
+    "client": "npm start --prefix Frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,10 @@
   },
   "homepage": "https://github.com/A-Rehman01/E-Commerce-Site#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",
