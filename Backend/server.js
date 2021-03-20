@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import productRoutes from './routes/productRoutes.js';
+import usersRoutes from './routes/userRoutes.js';
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
 //DB
 import connectDB from './config/db.js';
@@ -13,6 +14,9 @@ connectDB();
 
 const app = express();
 
+//Except JSON data in body-parser
+app.use(express.json());
+
 //Test Server
 app.get('/', (req, res) => {
   res.send('API  is Running...');
@@ -20,6 +24,7 @@ app.get('/', (req, res) => {
 
 //Routes
 app.use('/api/products', productRoutes);
+app.use('/api/users', usersRoutes);
 
 //Custom_Errorhandling
 app.use(notFound);

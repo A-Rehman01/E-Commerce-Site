@@ -1,4 +1,3 @@
-import { zalgo } from 'colors';
 import { ADD_CART_ITEM, REMOVE_CART_ITEM } from '../constants/cartConstant';
 
 const initialState = {
