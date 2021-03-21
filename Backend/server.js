@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import colors from 'colors';
 import productRoutes from './routes/productRoutes.js';
 import usersRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
 //DB
 import connectDB from './config/db.js';
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 //Routes
 app.use('/api/products', productRoutes);
 app.use('/api/users', usersRoutes);
+app.use('/api/orders', orderRoutes);
 
 //Custom_Errorhandling
 app.use(notFound);
