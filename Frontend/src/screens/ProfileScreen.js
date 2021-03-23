@@ -31,14 +31,15 @@ const ProfileScreen = ({ location, history }) => {
     } else {
       if (!user.name) {
         dispatch(getUserDetails('profile'));
-        dispatch(listMyOrder());
       } else {
         setName(user.name);
         setEmail(user.email);
       }
     }
-  }, [history, userInfo, user]);
-
+  }, [history, userInfo, user, orders]);
+  useEffect(() => {
+    dispatch(listMyOrder());
+  }, []);
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
