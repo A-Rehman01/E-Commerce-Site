@@ -16,6 +16,15 @@ import {
   USER_LIST_FAIL,
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
+  USER_LIST_RESET,
+  USER_DELETE_FAIL,
+  USER_DELETE_REQUEST,
+  USER_DELETE_SUCCESS,
+  
+  USER_UPDATE_FAIL,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_RESET,
+  USER_UPDATE_REQUEST,
 } from '../constants/userConstant';
 
 const initialState = {};
@@ -162,6 +171,64 @@ export const userListReducers = (state = { users: [] }, action) => {
         ...state,
         loading: false,
         error: payload,
+      };
+    case USER_LIST_RESET:
+      return {
+        users: [],
+      };
+    default:
+      return state;
+  }
+};
+
+export const userDeleteReducers = (state = {}, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case USER_DELETE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case USER_DELETE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+      };
+    case USER_DELETE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const userUpdateReducers = (state = { user: {} }, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case USER_UPDATE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case USER_UPDATE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+      };
+    case USER_UPDATE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: payload,
+      };
+    case USER_UPDATE_RESET:
+      return {
+        user: {},
       };
     default:
       return state;

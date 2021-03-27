@@ -4,12 +4,12 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { logout } from '../actions/userActions';
 
-const Header = () => {
+const Header = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const dispatch = useDispatch();
   const logoutHandler = () => {
-    dispatch(logout());
+    dispatch(logout(history));
   };
   return (
     <header>
