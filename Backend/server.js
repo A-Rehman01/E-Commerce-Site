@@ -1,9 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
 import colors from 'colors';
 import productRoutes from './routes/productRoutes.js';
 import usersRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
 //DB
 import connectDB from './config/db.js';
@@ -28,10 +30,16 @@ app.use('/api/products', productRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/orders', orderRoutes);
 
+//UploadImage Routes
+app.use('/api/upload', uploadRoutes);
+
 //PAYPAL routes
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 );
+
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //Custom_Errorhandling
 app.use(notFound);
