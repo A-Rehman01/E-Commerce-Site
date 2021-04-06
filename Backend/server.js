@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
 import colors from 'colors';
+import morgan from 'morgan';
 import productRoutes from './routes/productRoutes.js';
 import usersRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
@@ -19,6 +20,11 @@ const app = express();
 
 //Except JSON data in body-parser
 app.use(express.json());
+
+//APIs info
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 //Test Server
 app.get('/', (req, res) => {
