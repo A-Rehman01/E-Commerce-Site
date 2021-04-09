@@ -100,7 +100,7 @@ const ProductScreen = ({ history, match }) => {
               </Col>
               <Col md={3}>
                 <Card>
-                  <ListGroup variant='flush'>
+                  <ListGroup   variant='flush'>
                     <ListGroup.Item>
                       <Row>
                         <Col>Price:</Col>
